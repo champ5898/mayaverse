@@ -117,8 +117,8 @@ export default function Home() {
         <p>
           We are a passionate team of movie buffs and tech enthusiasts dedicated
           to making movie discovery fun and effortless. <br />
-          <strong>Our Mission:</strong> To connect people with stories they'll
-          love.
+          <strong>Our Mission:</strong> To connect people with stories
+          they&#39;ll love.
         </p>
       </section>
 
