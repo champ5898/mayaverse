@@ -77,17 +77,17 @@ export default function Home() {
         <div className={styles.testimonialsGrid}>
           <blockquote>
             <p>
-              “MayaVerse helped me find movies I never would have discovered on
-              my own!”
+              &#8220;MayaVerse helped me find movies I never would have
+              discovered on my own!&#8221;
             </p>
-            <footer>— Alex R.</footer>
+            <footer>&#8212; Alex R.</footer>
           </blockquote>
           <blockquote>
             <p>
-              “The recommendations are spot on. The interface is so easy to
-              use!”
+              &#8220;The recommendations are spot on. The interface is so easy
+              to use!&#8221;
             </p>
-            <footer>— Priya S.</footer>
+            <footer>&#8212; Priya S.</footer>
           </blockquote>
         </div>
       </section>
