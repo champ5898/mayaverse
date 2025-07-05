@@ -1,8 +1,32 @@
 "use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useState } from "react";
 
 export default function Home() {
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterMsg, setNewsletterMsg] = useState("");
+
+  const handleNewsletterSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+    setNewsletterMsg("");
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: newsletterEmail }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      setNewsletterMsg("Subscribed successfully!");
+      setNewsletterEmail("");
+    } else {
+      setNewsletterMsg(data.error || "Subscription failed.");
+      console.log(data.error);
+    }
+  };
+
   return (
     <div className={styles.page}>
       {/* Header with Logo */}
@@ -127,18 +151,21 @@ export default function Home() {
         <h2>Stay Updated</h2>
         <form
           className={styles.newsletterForm}
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleNewsletterSubmit}
         >
           <input
             type="email"
             placeholder="Your email address"
             required
             className={styles.newsletterInput}
+            value={newsletterEmail}
+            onChange={(e) => setNewsletterEmail(e.target.value)}
           />
           <button type="submit" className={styles.ctaButton}>
             Subscribe
           </button>
         </form>
+        {newsletterMsg && <p>{newsletterMsg}</p>}
       </section>
 
       {/* FAQ Section */}
